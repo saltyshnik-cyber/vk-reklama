@@ -1257,6 +1257,16 @@
     clearTimeout(callTimer); clearInterval(callTick);
     setStatus(msg || '', err);
   }
+  function callFail(err){
+    var txt = '';
+    try{ txt = String((err && (err.message || err.name || err.errorMsg)) || err || ''); }catch(e){}
+    if(/permission|notallowed|denied|microphone|mic/i.test(txt)){
+      resetCall('Нет доступа к микрофону. Разрешите его в настройках браузера и попробуйте ещё раз.', true);
+    } else {
+      goal('call_error');
+      resetCall('Демо сейчас недоступно. Оставьте заявку или позвоните мне, и я покажу вживую.', true);
+    }
+  }
   function getCount(){ try{ return +(localStorage.getItem('demoCalls') || 0); }catch(e){ return 0; } }
   function bumpCount(){ try{ localStorage.setItem('demoCalls', String(getCount()+1)); }catch(e){} }
 
@@ -1280,12 +1290,12 @@
         vapi.on('speech-start', function(){ if(calling) setStatus('Ассистент говорит…'); });
         vapi.on('speech-end', function(){ if(calling) setStatus('Слушаю вас…'); });
         vapi.on('volume-level', function(v){ callBox.querySelector('.core').style.setProperty('--lv', (1 + Math.min(1, v) * 0.45).toFixed(2)); });
-        vapi.on('error', function(){ resetCall('Не получилось соединиться. Проверьте микрофон или посмотрите видео.', true); });
+        vapi.on('error', function(err){ callFail(err); });
       }
       bumpCount();
       await vapi.start(VAPI_ASSISTANT_ID);
     }catch(e){
-      resetCall('Не получилось соединиться. Проверьте доступ к микрофону или посмотрите видео.', true);
+      callFail(e);
     }
   }
   callBtn.addEventListener('click', function(){
