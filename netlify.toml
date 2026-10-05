@@ -1,9 +1,0 @@
-[build]
-  publish = "."
-  functions = "netlify/functions"
-
-# Форма на сайте отправляет заявки на /api/lead, перенаправляем на функцию Netlify
-[[redirects]]
-  from = "/api/lead"
-  to = "/.netlify/functions/lead"
-  status = 200
