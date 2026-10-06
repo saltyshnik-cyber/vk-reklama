@@ -7,7 +7,7 @@
 //
 // Диагностика: если открыть адрес функции в браузере (GET), она покажет только
 // true/false, видит ли она переменные, сами значения не показываются.
-
+ 
 exports.handler = async (event) => {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
@@ -16,7 +16,7 @@ exports.handler = async (event) => {
     headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' },
     body: JSON.stringify(obj),
   });
-
+ 
   if (event.httpMethod === 'GET') {
     return json(200, {
       ok: false,
@@ -27,23 +27,23 @@ exports.handler = async (event) => {
     });
   }
   if (event.httpMethod !== 'POST') return json(405, { ok: false });
-
+ 
   let body = {};
   try { body = JSON.parse(event.body || '{}'); } catch (e) { /* пустое тело */ }
-
+ 
   const clean = (v, max) => String(v || '').replace(/[\u0000-\u001f]/g, ' ').trim().slice(0, max);
   const name = clean(body.name, 60);
   const phone = clean(body.phone, 20);
   const salon = clean(body.salon, 80);
   const page = clean(body.page, 200);
-
+ 
   if (name.length < 2 || !/^\+7\d{10}$/.test(phone)) {
     return json(400, { ok: false, error: 'invalid' });
   }
   if (!token || !chatId) {
     return json(500, { ok: false, error: 'not configured', tokenSet: !!token, chatIdSet: !!chatId });
   }
-
+ 
   const text = [
     'Новая заявка с сайта',
     'Имя: ' + name,
@@ -52,7 +52,7 @@ exports.handler = async (event) => {
     body.promo === true ? 'Акция: да (запуск по акции)' : null,
     page ? 'Страница: ' + page : null,
   ].filter(Boolean).join('\n');
-
+ 
   try {
     const r = await fetch('https://api.telegram.org/bot' + String(token).trim() + '/sendMessage', {
       method: 'POST',
@@ -69,3 +69,4 @@ exports.handler = async (event) => {
     return json(502, { ok: false, error: 'network' });
   }
 };
+ 
