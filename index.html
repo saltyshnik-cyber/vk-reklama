@@ -1369,7 +1369,7 @@
         method:'POST', headers:{'Content-Type':'application/json'},
         body: JSON.stringify({name:name, phone:'+' + digits, salon:fSalon.value.trim(), page:location.href, promo: !!window.promoFlag})
       });
-      if(!r.ok) throw new Error('bad status');
+      if(!r.ok){ var info = null; try{ info = await r.json(); }catch(e2){} console.warn('lead error', r.status, info); throw new Error('bad status'); }
       lsSet('leadSent', '1'); goal('lead');
       document.getElementById('form-body').innerHTML =
         '<div class="form-done"><b>Заявка отправлена</b><span>Спасибо! Я перезвоню вам в ближайшее время.</span></div>';
