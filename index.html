@@ -999,12 +999,12 @@
       </div>
       <div class="price hot">
         <div class="for">Поддержка и работа ассистента</div>
-        <div class="amt">10 000 ₽ <small>/ мес</small></div>
+        <div class="amt">15 000 ₽ <small>/ мес</small></div>
         <ul>
           <li>Работа ассистента 24/7</li>
           <li>В тариф входит 300 минут разговоров в месяц</li>
           <li>Правки сценариев, когда меняются цены и услуги</li>
-          <li>Сверх лимита минут: доплата по понятному тарифу, назову до запуска</li>
+          <li>Сверх лимита минут: 25 ₽ за минуту</li>
         </ul>
       </div>
     </div>
@@ -1149,7 +1149,7 @@
     <button class="promo-x" data-close aria-label="Закрыть">&times;</button>
     <div class="promo-sticker" id="promo-pct">−50%</div>
     <div class="promo-chip"><i></i>Акция для первых салонов</div>
-    <div class="promo-title" id="promo-title" role="heading" aria-level="2">Запуск <s id="promo-old">20 000 ₽</s><span class="new" id="promo-new">10 000 ₽</span></div>
+    <div class="promo-title" id="promo-title" role="heading" aria-level="2">Запуск <s id="promo-old">20 000 ₽</s><span class="new" id="promo-new">15 000 ₽</span></div>
     <p class="promo-text" id="promo-text"></p>
     <div class="promo-spots" id="promo-spots" aria-label="Мест по акции"></div>
     <a class="btn" href="#lead" id="promo-cta">Хочу по акции</a>
@@ -1159,10 +1159,23 @@
 
 </div>
 
+<!-- VK Реклама: пиксель 3799656 -->
+<script>
+var _tmr = window._tmr || (window._tmr = []);
+_tmr.push({id: "3799656", type: "pageView", start: (new Date()).getTime()});
+(function (d, w, id) {
+  if (d.getElementById(id)) return;
+  var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+  ts.src = "https://top-fwz1.mail.ru/js/code.js";
+  var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+  if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window, "tmr-code");
+</script>
+<noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3799656;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru"></div></noscript>
 <script>
   /* ---- Analytics goals ---- */
   var YM_ID = 113421407;
-  var VK_PIXEL_ID = '';   // ID пикселя VK Рекламы; когда появится, впишите сюда и добавьте код пикселя
+  var VK_PIXEL_ID = '3799656';   // ID пикселя VK Рекламы; когда появится, впишите сюда и добавьте код пикселя
   function goal(name){
     try{ if(window.ym){ ym(YM_ID, 'reachGoal', name); } }catch(e){}
     try{ if(VK_PIXEL_ID && window._tmr){ window._tmr.push({type:'reachGoal', id:VK_PIXEL_ID, goal:name}); } }catch(e){}
@@ -1437,7 +1450,7 @@
     document.getElementById('promo-pct').textContent = '−' + promoPct + '%';
     document.getElementById('promo-old').textContent = rub(PROMO.oldPrice);
     document.getElementById('promo-new').textContent = rub(PROMO.newPrice);
-    document.getElementById('promo-text').innerHTML = 'Для первых ' + PROMO.spotsTotal + ' салонов, в обмен на честный отзыв после месяца работы. Подписка ' + rub(10000) + ' в месяц без изменений.';
+    document.getElementById('promo-text').innerHTML = 'Для первых ' + PROMO.spotsTotal + ' салонов, в обмен на честный отзыв после месяца работы. Подписка ' + rub(15000) + ' в месяц без изменений.';
     var box = document.getElementById('promo-spots'), html = '';
     for(var i=0;i<PROMO.spotsTotal;i++){ html += '<i class="' + (i < PROMO.spotsLeft ? 'on' : '') + '"></i>'; }
     box.innerHTML = html + '<span>Мест по акции: ' + PROMO.spotsLeft + ' из ' + PROMO.spotsTotal + '</span>';
@@ -1515,7 +1528,7 @@
   var m = document.getElementById('missed'), c = document.getElementById('conv'), k = document.getElementById('check');
   function plural(n, a, b, c2){ var m10=n%10, m100=n%100; return (m10===1&&m100!==11)?a:((m10>=2&&m10<=4&&(m100<10||m100>=20))?b:c2); }
   function calc(){
-    var missed = +m.value, conv = +c.value, check = +k.value, SUB = 10000;
+    var missed = +m.value, conv = +c.value, check = +k.value, SUB = 15000;
     var atMax = function(el){ return +el.value >= +el.max; };
     document.getElementById('o-missed').textContent = missed + (atMax(m) ? '+' : '');
     document.getElementById('o-conv').textContent = conv + (atMax(c) ? '+' : '');
@@ -1535,7 +1548,7 @@
     var level, text;
     if(r >= 2){
       level = 'good';
-      text = 'Подписка окупается с запасом: даже если ассистент вернёт только половину записей, это около ' + fmt(loss/2) + ' в месяц против 10 000 ₽.';
+      text = 'Подписка окупается с запасом: даже если ассистент вернёт только половину записей, это около ' + fmt(loss/2) + ' в месяц против 15 000 ₽.';
     } else if(r >= 1){
       level = 'ok';
       text = 'Подписка окупится, если ассистент вернёт большую часть этих записей. Запас небольшой, поэтому важно, чтобы он хорошо записывал.';
@@ -1544,7 +1557,7 @@
       text = 'Потери меньше стоимости подписки, поэтому по деньгам она, скорее всего, не окупится. Смысл есть, только если вам важно освободить администратора или принимать вечерние звонки.';
     } else {
       level = 'low';
-      text = 'При таких цифрах ассистент вам, скорее всего, не нужен: звонков теряется мало, и подписка 10 000 ₽ в месяц не окупится. Подставьте свои реальные цифры или напишите мне, подскажу честно.';
+      text = 'При таких цифрах ассистент вам, скорее всего, не нужен: звонков теряется мало, и подписка 15 000 ₽ в месяц не окупится. Подставьте свои реальные цифры или напишите мне, подскажу честно.';
     }
     document.getElementById('result').setAttribute('data-level', level);
     document.getElementById('verdict').textContent = text;
