@@ -72,34 +72,55 @@ nav.main a[aria-current=page]{background:var(--card);color:var(--ink)}
 @media(min-width:900px){nav.main{display:flex}.brand b{display:block}.hphone{display:block}}
 
 /* hero */
-.hero{padding-block:12px 8px}
-.hero-p{background:var(--card);border-radius:var(--r-lg);padding:clamp(20px,4vw,56px);display:grid;grid-template-columns:minmax(0,1fr);gap:28px;overflow:hidden}
+.hero{padding-block:8px}
+.hero-p{position:relative;isolation:isolate;background:var(--brand);color:#fff;border-radius:var(--r-lg);padding:clamp(22px,4vw,56px);display:grid;grid-template-columns:minmax(0,1fr);gap:26px;overflow:hidden}
 .hero-p>*{min-width:0}
-.hero-p .lead{font-size:clamp(16px,1.6vw,19px);color:var(--ink2);max-width:520px;margin-top:18px}
+.hero-p::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(520px 320px at 92% 8%,rgba(201,242,90,.28),transparent 65%),radial-gradient(420px 280px at 0% 100%,rgba(201,242,90,.10),transparent 70%)}
+.hero-p::after{content:"DSP";position:absolute;right:-2%;bottom:-9%;z-index:-1;font-weight:800;font-size:clamp(160px,30vw,380px);letter-spacing:-.06em;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.07)}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:7px 14px 7px 10px;border-radius:999px;background:rgba(255,255,255,.1);font-size:13px;font-weight:700;color:#E8F5C8}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(201,242,90,.25)}
+.hero-p h1{margin-top:18px;font-size:clamp(36px,5.6vw,64px);line-height:1.03}
+.hero-p h1 em{font-style:normal;color:var(--accent)}
+.hero-p .lead{font-size:clamp(16px,1.6vw,19px);color:rgba(255,255,255,.74);max-width:500px;margin-top:18px}
 .hero-p .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-.heroq{display:flex;margin-top:22px;max-width:520px;background:var(--stage);border-radius:999px;padding:5px;box-shadow:inset 0 0 0 1.5px var(--line)}
-.heroq input{flex:1;min-width:0;border:0;background:transparent;padding:0 18px;outline:0;font-weight:600}
-.heroq button{border:0;border-radius:999px;min-height:44px;padding:0 22px;background:var(--brand);color:#fff;font-weight:700}
-.wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.wall a{position:relative;aspect-ratio:1;border-radius:var(--r-sm);background:var(--stage);overflow:hidden;display:block}
-.wall img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;padding:8%}
-.wall .pt{position:absolute;left:6px;bottom:6px;font-size:11px;padding:3px 8px}.wall .pt small{display:none}
+.hero-p .btn.line{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.45)}
+.hero-p .btn.line:hover{background:#fff;color:var(--brand)}
+.heroq{display:flex;margin-top:22px;max-width:500px;background:rgba(255,255,255,.1);border-radius:999px;padding:5px;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.16)}
+.heroq input{flex:1;min-width:0;border:0;background:transparent;padding:0 18px;outline:0;font-weight:600;color:#fff}
+.heroq input::placeholder{color:rgba(255,255,255,.55)}
+.heroq button{border:0;border-radius:999px;min-height:44px;padding:0 22px;background:var(--accent);color:var(--accent-ink);font-weight:800}
+.stack{position:relative;height:clamp(300px,82vw,330px);margin-top:6px}
+.sc{position:absolute;display:block;background:#fff;border-radius:22px;padding:7px;box-shadow:0 18px 40px rgba(0,0,0,.28);text-decoration:none;color:var(--ink);transition:transform .25s}
+.sc:hover{transform:rotate(0) scale(1.03)!important;z-index:5}
+.sc .im{aspect-ratio:1;border-radius:16px;background:var(--stage);overflow:hidden}
+.sc img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;padding:5%}
+.sc .st{position:absolute;left:-8px;bottom:-10px;background:var(--accent);color:var(--accent-ink);font-weight:800;font-size:15px;padding:7px 13px;border-radius:14px;transform:rotate(-5deg);box-shadow:0 6px 14px rgba(0,0,0,.2);white-space:nowrap}
+.st small{font-weight:700;opacity:.7;margin-left:4px;font-size:11px}
+.sc.s1{left:0;top:26px;width:55%;transform:rotate(-5deg);z-index:2}
+.sc.s2{right:0;top:0;width:45%;transform:rotate(5deg)}
+.sc.s2 .st{left:auto;right:-6px;top:-10px;bottom:auto;transform:rotate(5deg)}
+.sc.s3{right:6%;bottom:0;width:41%;transform:rotate(-2deg);z-index:3}
 .pt{display:inline-block;padding:5px 11px;border-radius:999px;background:var(--card);box-shadow:0 1px 0 var(--line);font-weight:800;font-size:13px;white-space:nowrap}
-.pt small{font-weight:600;color:var(--mute);margin-left:4px;font-size:11px}
-.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+.ticker{margin-top:10px;overflow:hidden;border-radius:999px;background:var(--accent);color:var(--accent-ink);padding:13px 0}
+.ticker div{display:flex;width:max-content;animation:tick 32s linear infinite}
+.ticker span{padding:0 22px;font-weight:800;font-size:15px;white-space:nowrap;display:flex;align-items:center;gap:44px}
+.ticker span::after{content:"✦";font-size:13px;opacity:.7}
+@keyframes tick{to{transform:translateX(-50%)}}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
 .facts div{background:var(--card);border-radius:var(--r-md);padding:20px 22px}
-.facts b{display:block;font-size:clamp(22px,2.6vw,30px);font-weight:800;letter-spacing:-.02em}
-.facts span{font-size:14px;color:var(--mute);font-weight:600}
-@media(min-width:900px){.hero-p{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);align-items:center}.facts{grid-template-columns:repeat(4,1fr)}}
+.facts div:first-child{background:#E4F3B9}
+.facts b{display:block;font-size:clamp(24px,3vw,36px);font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.facts span{display:block;margin-top:4px;font-size:14px;color:var(--ink2);font-weight:600}
+@media(min-width:900px){.hero-p{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:center;min-height:540px}.stack{height:440px}.facts{grid-template-columns:repeat(4,minmax(0,1fr))}.sc .st{font-size:18px}}
 
 /* sections */
 .sec{padding-block:clamp(36px,5vw,64px) 0}
 .sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:24px}
 .sec-h p{color:var(--mute);margin-top:8px}
 .cat-g{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.cat{position:relative;display:block;text-decoration:none;border-radius:var(--r-md);background:var(--card);padding:14px;min-width:0;overflow:hidden;transition:transform .18s}
+.cat{position:relative;display:block;text-decoration:none;border-radius:var(--r-md);background:var(--t,var(--card));padding:14px;min-width:0;overflow:hidden;transition:transform .18s}
 .cat:hover{transform:translateY(-3px)}
-.cat .im{aspect-ratio:4/3;border-radius:18px;background:var(--stage);overflow:hidden}
+.cat .im{aspect-ratio:4/3;border-radius:18px;background:rgba(255,255,255,.7);overflow:hidden}
 .cat .im img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;padding:6%}
 .cat h3{font-size:17px;margin:14px 4px 0;overflow-wrap:break-word}
 .cat p{color:var(--mute);font-size:14px;font-weight:600;margin:3px 4px 4px}
@@ -131,6 +152,7 @@ nav.main a[aria-current=page]{background:var(--card);color:var(--ink)}
 .step span{font-weight:800;font-size:15px}
 .step small{font-weight:600;opacity:.7;margin-left:4px;font-size:12px}
 
+@media(max-width:759px){.rail{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(var(--gut) * -1);padding:0 var(--gut) 8px;scrollbar-width:none}.rail::-webkit-scrollbar{display:none}.rail .pc{flex:0 0 66%;scroll-snap-align:start}}
 /* feature cards */
 .f-g{display:grid;gap:12px}
 .feat{background:var(--card);border-radius:var(--r-md);padding:26px}
@@ -270,9 +292,13 @@ footer a{color:var(--ink2)}
 /* Telegram mini-app mode */
 .tabbar{display:none}
 html[data-tg]{--tab:calc(64px + env(safe-area-inset-bottom));--hdr:56px}
-html[data-tg] nav.main,html[data-tg] .hphone,html[data-tg] .brand b,html[data-tg] footer,html[data-tg] .cartbtn{display:none}
+html[data-tg] nav.main,html[data-tg] .hphone,html[data-tg] footer,html[data-tg] .cartbtn{display:none}
+html[data-tg] .brand b{display:block}
+html[data-tg] .brand img{height:36px}
 html[data-tg] .hdr{position:static;background:transparent;backdrop-filter:none}
-html[data-tg] .hdr .row{min-height:56px}
+html[data-tg] .hdr .row{min-height:52px;padding-top:2px}
+.tgcall{display:none}
+html[data-tg] .tgcall{display:inline-flex}
 html[data-tg] .tabbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:35;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom))}
 .tabbar a,.tabbar button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;border:0;background:none;text-decoration:none;font-size:11px;font-weight:700;color:var(--mute);padding:6px 0;position:relative}
 .tabbar svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
@@ -293,6 +319,7 @@ html[data-tg] .drawer{max-height:88vh}
       <a href="#/contacts" data-nav="contacts">Контакты</a>
     </nav>
     <span class="sp"></span>
+    <a class="btn lime sm tgcall" href="tel:+79254510600">Позвонить</a>
     <a class="hphone" href="tel:+79254510600">+7 925 451-06-00</a>
     <button class="cartbtn" id="cartOpen" aria-label="Открыть корзину"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 11a1 1 0 0 1-1 .9H7.2a1 1 0 0 1-1-.9zM9 8V6.5a3 3 0 0 1 6 0V8"/></svg><span>Корзина</span><span class="n zero" id="cartN">0</span></button>
   </div>
@@ -447,25 +474,29 @@ const ICONS = {
   tag:'<path d="M3 12V4h8l10 10-8 8zM7.5 8.5h.01"/>',
 };
 const feat = (ic,t,p) => `<div class="feat"><div class="ic"><svg viewBox="0 0 24 24">${ICONS[ic]}</svg></div><h3>${t}</h3><p>${p}</p></div>`;
+const TINTS=['#FFEFD9','#E3EEFF','#E6F5DC','#FCE5EA','#EBE5FA','#DFF2EF'];
 function viewHome(){
-  const pick = ['kd-2063','50233','60646','jmk-9021','kb-1106','km-1086'].map(id=>BY[id]).filter(Boolean);
+  const pick = ['kd-2063','50233','60646'].map(id=>BY[id]).filter(Boolean);
   const cats = DATA.cats.map(c => { const L = DATA.items.filter(p=>p.c===c.id); const ph = L.find(p=>p.i&&p.i.startsWith('/img')) || L[0]; return {c, n:L.length, ph}; });
   const fresh = DATA.items.slice(0,8);
-  const wallPrice = p => `<span class="pt">${rub(p.p)}<small>за шт</small></span>`;
+  const tk = ['DSP','JAMAKY','LUVIMA',DATA.items.length+' моделей','доставка по России','цены дистрибьютора','склад в Москве'];
+  const tkHtml = '<span>'+tk.join('</span><span>')+'</span>';
   return `
   <section class="hero"><div class="wrap">
     <div class="hero-p">
       <div>
-        <h1>Бытовая техника оптом из Китая</h1>
-        <p class="lead">Официальный дистрибьютор DSP и JAMAKY. Прямые поставки, склад в Москве, доставка по всей России.</p>
-        <div class="cta"><a class="btn" href="#/catalog">Открыть каталог</a><a class="btn line" href="#/contacts">Написать менеджеру</a></div>
+        <span class="badge"><i></i>Официальный дистрибьютор DSP и JAMAKY</span>
+        <h1>Техника для дома <em>оптом</em> со склада в Москве</h1>
+        <p class="lead">Кофеварки, блендеры, гриль, фены и утюги. Цены дистрибьютора, отгрузка коробками, доставка по всей России.</p>
+        <div class="cta"><a class="btn lime" href="#/catalog">Открыть каталог</a><a class="btn line" href="#/contacts">Написать менеджеру</a></div>
         <form class="heroq" id="heroQ" role="search"><input type="search" placeholder="Модель или название: KD-2063, фен" aria-label="Поиск по каталогу"><button type="submit">Найти</button></form>
       </div>
-      <div class="wall" aria-label="Хиты каталога">${pick.map(p=>`<a href="#/p/${esc(p.id)}" aria-label="${esc(p.n+' '+p.m)}">${imgTag(p,false)}${wallPrice(p)}</a>`).join('')}</div>
+      <div class="stack" aria-label="Хиты каталога">${pick.map((p,i)=>`<a class="sc s${i+1}" href="#/p/${esc(p.id)}" aria-label="${esc(p.n+' '+p.m)}"><div class="im">${imgTag(p,false)}</div><span class="st">${rub(p.p)}<small>за шт</small></span></a>`).join('')}</div>
     </div>
+    <div class="ticker" aria-hidden="true"><div>${tkHtml}${tkHtml}${tkHtml}${tkHtml}</div></div>
     <div class="facts">
       <div><b>${DATA.items.length}</b><span>моделей в каталоге</span></div>
-      <div><b>DSP · JAMAKY</b><span>официальный дистрибьютор</span></div>
+      <div><b>от 250 ₽</b><span>цена за штуку</span></div>
       <div><b>вся Россия</b><span>доставка транспортными</span></div>
       <div><b>Москва</b><span>ТК «Южные ворота», пав. 18-20</span></div>
     </div>
@@ -473,12 +504,12 @@ function viewHome(){
 
   <section class="sec"><div class="wrap">
     <div class="sec-h"><h2>Что ищете</h2><a class="pill-link" href="#/catalog">Весь каталог →</a></div>
-    <div class="cat-g">${cats.map(({c,n,ph})=>`<a class="cat" href="#/catalog?c=${c.id}"><div class="im">${ph?imgTag(ph):''}</div><h3>${esc(c.name)}</h3><p>${n} ${plural(n,'модель','модели','моделей')}</p></a>`).join('')}</div>
+    <div class="cat-g">${cats.map(({c,n,ph},i)=>`<a class="cat" style="--t:${TINTS[i%6]}" href="#/catalog?c=${c.id}"><div class="im">${ph?imgTag(ph):''}</div><h3>${esc(c.name)}</h3><p>${n} ${plural(n,'модель','модели','моделей')}</p></a>`).join('')}</div>
   </div></section>
 
   <section class="sec"><div class="wrap">
     <div class="sec-h"><div><h2>Свежие поступления</h2><p>Количество ограничено, популярное разбирают быстро.</p></div><a class="pill-link" href="#/catalog?s=new">Все новинки →</a></div>
-    <div class="grid c4">${fresh.map(card).join('')}</div>
+    <div class="grid c4 rail">${fresh.map(card).join('')}</div>
     <div class="more"><a class="btn line" href="#/catalog">Показать весь каталог</a></div>
   </div></section>
 
