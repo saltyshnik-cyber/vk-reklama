@@ -1,0 +1,7 @@
+{
+  "rewrites": [{ "source": "/api/webhook", "destination": "/api/index" }],
+  "functions": { "api/*.py": { "includeFiles": "products.json" } },
+  "headers": [
+    { "source": "/img/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] }
+  ]
+}
